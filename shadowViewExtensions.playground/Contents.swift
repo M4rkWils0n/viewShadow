@@ -17,9 +17,6 @@ struct ShadowParams {
     let shadowRadius: CGFloat
 }
 
-func shadowParamsForRedSquare() -> ShadowParams {
-    return ShadowParams(shadowColor: UIColor.red.cgColor, shadowOffSet: CGSize(width: 3, height: -3), shadowOpacity: 0.5, shadowRadius: 4.0)
-}
 
 func shadowParamsForBlueSquare() -> ShadowParams {
         return ShadowParams(shadowColor: UIColor.blue.cgColor, shadowOffSet: CGSize(width: -3, height: 3), shadowOpacity: 0.5, shadowRadius: 4.0)
@@ -28,17 +25,13 @@ func shadowParamsForBlueSquare() -> ShadowParams {
 class MyViewController : UIViewController {
     
     let backgroundView = UIView()
-    let redView = UIView()
     let blueView = UIView()
-    let yellowView = UIView()
     let greenView = UIView()
     
     override func loadView() {
         
         backgroundView.backgroundColor = .white
-        redView.backgroundColor = .red
         blueView.backgroundColor = .blue
-        yellowView.backgroundColor = .yellow
         greenView.backgroundColor = .green
         self.view = backgroundView
         
@@ -47,22 +40,16 @@ class MyViewController : UIViewController {
     }
     
     private func addSubViews(){
-        view.addSubview(redView)
-        redView.addSubview(yellowView)
         view.addSubview(blueView)
         blueView.addSubview(greenView)
     }
     
     private func styleViews(){
-        redView.frame = CGRect(x: 140, y: 20, width: 100, height: 100)
-        redView.addViewShadowWith(shadowParamsForRedSquare())
-        
         blueView.frame = CGRect(x: 20, y: 20, width: 100, height: 100)
         blueView.layer.cornerRadius = 5
         blueView.clipsToBounds = true
         blueView.addViewShadowWith(shadowParamsForBlueSquare())
         
-        yellowView.frame = CGRect(x: 50, y: 50, width: 100, height: 100)
         greenView.frame = CGRect(x: 50, y: 50, width: 100, height: 100)
     }
 }
